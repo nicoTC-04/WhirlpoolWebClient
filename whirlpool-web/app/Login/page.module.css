@@ -40,10 +40,11 @@
   .inputGroup input {
     width: 93%;
     padding: 10px;
-    background-color: #0d436b; /* Lighter background for inputs #0f3460*/
+    /*background-color: #0d436b; */
+    background-color: #dee0e3;
     border: 2px solid transparent;
     border-radius: 4px;
-    color: #e1e1e1;
+    color: #181818;
   }
   
   .inputGroup input:focus {
