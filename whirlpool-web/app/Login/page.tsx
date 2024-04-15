@@ -55,6 +55,7 @@ const Login = ({ handleLogin }: { handleLogin: (token: string) => void }) => {
       <div className={styles.loginContainer}>
         <div className={styles.logoContainer}>
           <Image src="/logo_white.png" alt="Whirlpool" width={400} height={133.3} />
+          {/*<Image src="/logo_black.png" alt="Whirlpool" width={400} height={133.3} />*/}
         </div>
 
         <div className={styles.separator}></div>
