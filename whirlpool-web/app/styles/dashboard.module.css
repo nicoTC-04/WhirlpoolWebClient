@@ -1,42 +1,47 @@
-.container{
-    flex: 1;
-    display: flex;
-    text-align: center; 
-    color: #1a1a2e;
+.container {
+  flex: 1;
+  display: flex;
+  text-align: center;
+  color: #1a1a2e;
 }
 
-.usuario{
-    
-    width: 20vw;
-    height: 90vh;
-    margin: 2%; 
-    
+.navbar {
+  width: 100%;
+  height: 10vh;
+  padding-top: 1%;
+  display: flex;
+  background-color: #00a0dd;
+  justify-content: space-between;
 }
 
-.reporte{
-    width: 45vw;
-    
+.usuario {
+  width: 10vw;
 }
 
-.leaderboard{
-    
-    width: 25vw;
-    height: 45vh;
-    margin: 2%;
-
-    
+.logo {
+  width: 20%;
+  height: 100%;
+  margin: 0.5%;
 }
 
-.game{
-    margin-top: 23%;
-    height: 33vh;
-    
-    
-}
-.right{
-    
-    display: block;
-    margin-left: 1.5%;
+.reporte {
+  width: 65vw;
+  margin: 2%;
+  text-align: left;
 }
 
+.leaderboard {
+  width: 25vw;
+  height: 45vh;
+  margin: 2%;
+}
 
+.game {
+  margin-top: 23%;
+  height: 23vh;
+  background-color: #1a1a2e;
+}
+.right {
+  display: block;
+  margin: 1.5%;
+}

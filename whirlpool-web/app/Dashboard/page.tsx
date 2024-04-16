@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+
 import styles from "../styles/dashboard.module.css";
 import Report from "../components/Report";
 import Leaderboard from "../components/Leaderboard";
@@ -46,13 +48,19 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.usuario}>
-          <h1> Hola! usuario </h1>
+      <div className={styles.navbar}>
+        <div className={styles.logo}>
+        <Image src="/logo_white.png" height={70} width={200} alt="whirlpool logo"/> 
         </div>
 
+        <div className={styles.usuario}>
+          <p> Usuario</p>
+        </div>
+      </div>
+      <div className={styles.container}>
+        
         <div className={styles.reporte}>
-          <h1> Reportes </h1>
+          
           {reporte.map((report, index) => (
             <Report
               key={index}
@@ -68,12 +76,12 @@ const Dashboard = () => {
 
         <div className={styles.right}>
           <div className={styles.leaderboard}>
-            <h1>LeaderBoard</h1>
+            
             <Leaderboard users={rank} />
           </div>
 
           <div className={styles.game}>
-            <h1>Diviertete y gana !</h1>
+            
           </div>
         </div>
       </div>
