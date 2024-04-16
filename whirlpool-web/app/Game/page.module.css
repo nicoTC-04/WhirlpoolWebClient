@@ -1,0 +1,8 @@
+.gameDiv {
+    /*background-color: yellowgreen;*/
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
