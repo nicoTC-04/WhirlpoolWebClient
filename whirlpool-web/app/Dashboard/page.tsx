@@ -3,25 +3,45 @@
 import React from "react";
 import styles from "../styles/dashboard.module.css";
 import Report from "../components/Report";
+import Leaderboard from "../components/Leaderboard";
+
 import axios from "axios";
 import { useState } from "react";
 
 const Dashboard = () => {
   const [reporte, setReporte] = React.useState<any[]>([]);
+  const [rank, setRank] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
 
   const fetchReporte = async () => {
     try {
       const response = await axios.get("http://35.197.2.168:5001/reportes");
       console.log(response);
-      setReporte(response.data);
+  
+      const sortedReportes = response.data.sort((a: { fecha_generacion: string }, b: { fecha_generacion: string }) => new Date(b.fecha_generacion).getTime() - new Date(a.fecha_generacion).getTime());  
+      setReporte(sortedReportes);
     } catch (error) {
       console.log("Error :(");
     }
   };
 
-// se llama cuando se crea el componente
+  const fetchLeaderBoard = async () => {
+    try {
+      const response = await axios.get("http://35.197.2.168:5001/tablero");
+      console.log(response);
+      setRank(response.data);
+    } catch (error) {
+      console.log("Error");
+    }
+  };
+
   React.useEffect(() => {
     fetchReporte();
+    fetchLeaderBoard();
   }, []);
 
   return (
@@ -41,17 +61,19 @@ const Dashboard = () => {
               id={report.id_reporte}
               ubicacion={report.nombre_ubicacion}
               fecha={report.fecha_generacion}
+              onClick={openModal}
             />
           ))}
         </div>
 
         <div className={styles.right}>
           <div className={styles.leaderboard}>
-            <h1> Leaderboard</h1>
+            <h1>LeaderBoard</h1>
+            <Leaderboard users={rank} />
           </div>
 
           <div className={styles.game}>
-            <h1>Game</h1>
+            <h1>Diviertete y gana !</h1>
           </div>
         </div>
       </div>

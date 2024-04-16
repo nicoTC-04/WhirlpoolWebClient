@@ -6,17 +6,18 @@
   width: 44.5vw;
   height: 13vh;
   background-color: #1a1a2e;
-  
-  border: 1px solid black;
   display: flex;
   overflow: hidden;
-  color: #dee0e3
-  ;
+  color: #dee0e3;
+  box-shadow: 0 4px 8px 0 black;
+  transition: transform 0.3s ease;
 }
 
 .reporte:hover {
   background-color: #eeb111;
   color: #484948;
+  box-shadow: 0 8px 16px 3px black;
+  transform: translateY(-10px);
 }
 
 

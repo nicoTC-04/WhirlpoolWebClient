@@ -7,8 +7,6 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #0d436b;
-    /*background-color: #dee0e3;*/
-    background-image: linear-gradient(135deg, rgba(5, 31, 64, 0.5) 25%, transparent 25%, transparent 50%, rgba(5, 31, 64, 0.5) 50%, rgba(5, 31, 64, 0.5) 75%, transparent 75%, transparent);
-    background-size: 800px 800px;
+
+    background-color: #dee0e3;
 }
