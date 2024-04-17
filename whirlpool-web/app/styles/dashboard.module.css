@@ -7,21 +7,23 @@
 
 .navbar {
   width: 100%;
-  height: 10vh;
+  height: 15%;
   padding-top: 1%;
+  max-height: 100%;
   display: flex;
-  background-color: #00a0dd;
+  background-color: #1a1a2e;
   justify-content: space-between;
 }
 
 .usuario {
   width: 10vw;
+  color: #dee0e3;
 }
 
 .logo {
   width: 20%;
-  height: 100%;
-  margin: 0.5%;
+  max-height: 100%;
+  margin-left: 2%;
 }
 
 .reporte {
@@ -30,18 +32,72 @@
   text-align: left;
 }
 
+.reporte button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
 .leaderboard {
   width: 25vw;
   height: 45vh;
   margin: 2%;
+  background-color: #1a1a2e;
 }
 
 .game {
   margin-top: 23%;
-  height: 23vh;
+  height: 21vh;
   background-color: #1a1a2e;
 }
 .right {
   display: block;
   margin: 1.5%;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  color: black ;
+}
+
+.modalContent {
+  background-color: #edf4fc;
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modalImage {
+  width: 50%;
+  height: 70%;
+  margin: auto;
+  position: relative;
+}
+
+.modalDescripcion {
+  text-align: center;
+  height: 25%;
+  width: 40%;
+  margin: auto;
+  display: block;
+}
+
+.exit{
+  
+  height: 3%;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
 }
