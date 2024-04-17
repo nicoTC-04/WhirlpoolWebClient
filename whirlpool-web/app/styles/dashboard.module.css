@@ -3,6 +3,7 @@
   display: flex;
   text-align: center;
   color: #1a1a2e;
+  margin: 3%;
 }
 
 .navbar {
@@ -15,11 +16,11 @@
   justify-content: space-between;
 }
 
-.navRight{
+.navRight {
   display: flex;
 }
 
-.navbar button{
+.navbar button {
   border: none;
   background: transparent;
   outline: none;
@@ -40,8 +41,13 @@
 
 .reporte {
   width: 65vw;
+  height: 70vh;
+  max-height: 70vh;
   margin: 2%;
   text-align: left;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: black;
 }
 
 .reporte button {
@@ -60,7 +66,7 @@
 }
 
 .game {
-  margin-top: 23%;
+  margin-top: 5%;
   height: 21vh;
   background-color: #1a1a2e;
 }
@@ -80,7 +86,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  color: black ;
+  color: black;
 }
 
 .modalContent {
@@ -106,8 +112,7 @@
   display: block;
 }
 
-.exit{
-  
+.exit {
   height: 3%;
   display: flex;
   justify-content: end;
