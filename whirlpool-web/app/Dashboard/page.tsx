@@ -1,9 +1,11 @@
+'use client'
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "../styles/dashboard.module.css";
 import Report from "../components/Report";
 import Leaderboard from "../components/Leaderboard";
 import axios from "axios";
+import Link from "next/link";
 
 // Definición de la interfaz para los datos de reporte
 interface ReporteData {
@@ -85,8 +87,15 @@ const Dashboard = () => {
             alt="whirlpool logo"
           />
         </div>
-        <div className={styles.usuario}>
-          <p> Usuario</p>
+        <div className={styles.navRight}>
+          <Link href="/Game">
+            <button>
+              <p style={{ color: "white" }}> Prueba nuestro Juego</p>
+            </button>
+          </Link>
+          <div className={styles.usuario}>
+            <p> Usuario</p>
+          </div>
         </div>
       </div>
       <div className={styles.container}>
@@ -123,10 +132,15 @@ const Dashboard = () => {
       </div>
       {/* Modal */}
       {modalOpen && (
-        <div className={styles.modal} >
+        <div className={styles.modal}>
           <div className={styles.modalContent}>
             <div className={styles.exit} onClick={closeModal}>
-              <Image src={"/x-solid.svg"} height={25} width={25} alt="exit"></Image>
+              <Image
+                src={"/x-solid.svg"}
+                height={25}
+                width={25}
+                alt="exit"
+              ></Image>
             </div>
             <div className={styles.modalImage}>
               <img

@@ -6,3 +6,9 @@
     align-items: center;
     height: 100vh;
 }
+
+.salir{
+    display: flex;
+    justify-content: end;
+    margin: 2%;
+}

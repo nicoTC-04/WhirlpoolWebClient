@@ -15,7 +15,19 @@
   justify-content: space-between;
 }
 
+.navRight{
+  display: flex;
+}
+
+.navbar button{
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
 .usuario {
+  margin-left: 30px;
   width: 10vw;
   color: #dee0e3;
 }
