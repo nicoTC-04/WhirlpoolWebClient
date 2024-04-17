@@ -11,7 +11,7 @@ interface reportProps {
   id: number;
   ubicacion: string;
   fecha: string;
-  onClick: () => void;
+  
 }
 
 
