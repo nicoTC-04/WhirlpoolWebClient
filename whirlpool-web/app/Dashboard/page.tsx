@@ -7,6 +7,9 @@ import Leaderboard from "../components/Leaderboard";
 import axios from "axios";
 import Link from "next/link";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 // Definición de la interfaz para los datos de reporte
 interface ReporteData {
   id_reporte: number;
@@ -20,8 +23,9 @@ const Dashboard = () => {
   const [reporte, setReporte] = useState<ReporteData[]>([]);
   const [rank, setRank] = useState<any[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [reporteSeleccionado, setReporteSeleccionado] =
-    useState<ReporteData | null>(null);
+  const [sliderValue, setSliderValue] = useState(100);
+  const [reporteSeleccionado, setReporteSeleccionado] = useState<ReporteData | null>(null);
+  const [textoIA, setTextoIA] = useState("Generando resumen...");
 
   const openModal = (
     idReporte: number,
@@ -45,9 +49,31 @@ const Dashboard = () => {
     console.log("cerrando modal");
   };
 
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSliderValue(Number(event.target.value));
+  };
+
+  const handleSubmit = async () => {
+    // Post con axios para solucionar reporte
+    try {
+      await axios.post("http://34.71.54.85:5001/reporteSolucionado", {
+        // datos
+        reporte_id: reporteSeleccionado?.id_reporte,
+        id_empleado_soluciona: 2,
+        puntos: sliderValue,
+      });
+  
+      setModalOpen(false);
+      window.location.reload();
+    } catch (error) {
+      console.error('Error submitting data', error);
+    }
+  };
+  
+
   const fetchReporte = async () => {
     try {
-      const response = await axios.get("http://35.197.2.168:5001/reportes");
+      const response = await axios.get("http://34.71.54.85:5001/reportes");
       console.log(response);
 
       const sortedReportes = response.data.sort(
@@ -63,7 +89,7 @@ const Dashboard = () => {
 
   const fetchLeaderBoard = async () => {
     try {
-      const response = await axios.get("http://35.197.2.168:5001/tablero");
+      const response = await axios.get("http://34.71.54.85:5001/tablero");
       console.log(response);
       setRank(response.data);
     } catch (error) {
@@ -71,9 +97,21 @@ const Dashboard = () => {
     }
   };
 
+  const fetchTextoIA = async () => {
+    try {
+      const response = await axios.get("http://34.71.54.85:5001/resumenAi");
+      console.log(response);
+      setTextoIA(response.data.resumen);
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+
   useEffect(() => {
     fetchReporte();
     fetchLeaderBoard();
+    fetchTextoIA();
   }, []);
 
   return (
@@ -127,13 +165,20 @@ const Dashboard = () => {
           <div className={styles.leaderboard}>
             <Leaderboard users={rank} />
           </div>
-          <div className={styles.game}></div>
+          <div className={styles.ai}>
+            <h4 className={styles.aiHeader}>TU RESUMEN:</h4>
+            <p className={styles.aiText}>{textoIA}</p>
+          </div>
         </div>
       </div>
+
+
       {/* Modal */}
       {modalOpen && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
+
+            {/* Botón de salida */}
             <div className={styles.exit} onClick={closeModal}>
               <Image
                 src={"/x-solid.svg"}
@@ -142,18 +187,41 @@ const Dashboard = () => {
                 alt="exit"
               ></Image>
             </div>
-            <div className={styles.modalImage}>
+
+            {/* Imagen del modal */}
+            <div className={styles.modalLeft}>
               <img
-                src={`http://35.197.2.168:5001/imagen/${reporteSeleccionado?.id_reporte}`}
+                src={`http://34.71.54.85:5001/imagen/${reporteSeleccionado?.id_reporte}`}
                 alt="Report Image"
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                className={styles.modalImage}
               />
             </div>
 
-            <div className={styles.modalDescripcion}>
-              <p>Empleado: {reporteSeleccionado?.nombre_empleado}</p>
-              <p>Ubicación: {reporteSeleccionado?.nombre_ubicacion}</p>
-              <p>Descripción: {reporteSeleccionado?.descripcion}</p>
+            {/* Descripción del modal */}
+            <div className={styles.modalRight}>
+              <div className={styles.modalHeader}>
+                <h2>{reporteSeleccionado?.nombre_empleado}</h2>
+                <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {reporteSeleccionado?.nombre_ubicacion}</p>
+                <p className={styles.descripcion}>Descripción: {reporteSeleccionado?.descripcion}</p>
+              </div>
+              <div className={styles.modalData}>
+                <input
+                  type="range"
+                  min="0"
+                  max="200"
+                  value={sliderValue}
+                  onChange={handleSliderChange} 
+                  className={styles.slider}
+                  id="myRange"
+                />
+                <div className={styles.labelValue}>
+                  <label htmlFor="myRange">Puntos: <span>{sliderValue}</span></label>
+                </div>
+
+                <button onClick={handleSubmit} className={styles.acceptButton}>
+                  Aceptar
+                </button>
+              </div>
             </div>
           </div>
         </div>

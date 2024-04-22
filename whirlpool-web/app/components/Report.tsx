@@ -30,7 +30,8 @@ const Report = (props: reportProps) => {
       <div className={styles.container}>
         <div className={styles.reporte}>
           <div className={styles.logo}>
-            <Image width={70} height={70} alt="Imagen" src="/liverpool.jpg" />
+            {/*<Image width={70} height={70} alt="Imagen" src="/liverpool.jpg" />*/}
+            <Image width={100} height={33} alt="Imagen" src="/logo_black.png" />
           </div>
 
           <div className={styles.descripcion}>

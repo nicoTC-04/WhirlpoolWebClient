@@ -3,7 +3,7 @@
   display: flex;
   text-align: center;
   color: #1a1a2e;
-  margin: 3%;
+  margin: 1.5vh 1vw;
 }
 
 .navbar {
@@ -41,8 +41,8 @@
 
 .reporte {
   width: 65vw;
-  height: 70vh;
-  max-height: 70vh;
+  height: 78vh;
+  max-height: 78vh;
   margin: 2%;
   text-align: left;
   overflow: auto;
@@ -61,19 +61,40 @@
 .leaderboard {
   width: 25vw;
   height: 45vh;
-  margin: 2%;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   background-color: #1a1a2e;
 }
 
-.game {
-  margin-top: 5%;
-  height: 21vh;
+.ai {
+  margin-top: 1vh;
+  height: 32vh;
+  width: 25vw;
   background-color: #1a1a2e;
 }
+
+.aiHeader {
+  color: #dee0e3;
+  text-align: center;
+  padding: 1vh;
+  padding-bottom: 0;
+  font-size: medium;
+}
+
+.aiText {
+  color: #dee0e3;
+  text-align: center;
+  padding: 1vh;
+  padding-top: 0;
+  font-size: small;
+}
+
 .right {
   display: block;
   margin: 1.5%;
 }
+
+
 
 .modal {
   position: fixed;
@@ -81,40 +102,163 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6); /* Slightly lighter overlay */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  color: black;
 }
 
 .modalContent {
-  background-color: #edf4fc;
-  width: 50%;
-  height: 50%;
-  padding: 20px;
+  background-color: #ffffff;
+  width: 60%; /* Adjusted width */
+  display: flex;
   border-radius: 10px;
-}
-
-.modalImage {
-  width: 50%;
-  height: 70%;
-  margin: auto;
+  overflow: hidden; /* Ensures the children respect border radius */
   position: relative;
 }
 
-.modalDescripcion {
-  text-align: center;
-  height: 25%;
-  width: 40%;
-  margin: auto;
-  display: block;
+.modalLeft, .modalRight {
+  width: 50%; /* Split width evenly */
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.exit {
-  height: 3%;
+.modalRight {
+  margin-left: 1vw;
+  margin-top: 0;
   display: flex;
-  justify-content: end;
+  flex-direction: column;
+  justify-content: flex-start; 
+}
+
+.modalImage {
+  max-height: 70vh; /* Adjusted height */
+  width: 100%;
+  height: auto; /* Keep image aspect ratio */
+  object-fit: cover; /* Ensure image covers the div */
+  padding-left: 1vw;
+}
+
+.modalHeader {
+  padding: 10vh 2vw 5vh;
+  text-align: center;
+}
+
+.descripcion {
+  margin-top: 7vh;
+}
+
+.modalData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 80%;
+  background: transparent;
+  outline: none;
+  margin: 0vh 1vw 2vh;
+}
+
+.slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px; /* Adjust track height */
+  background: #d3d3d3; /* Track color */
+  border-radius: 4px; /* Round the corners of the track */
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  margin-top: -8px; /* Align with the track */
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #eeb111; /* Green background */
+  border-radius: 50%; /* Make it circular */
+  cursor: pointer; /* Cursor on hover */
+  box-shadow: 0px 0px 2px #000; /* Add a subtle shadow to the thumb */
+}
+
+.slider::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: #d3d3d3;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #eeb111;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px #000;
+}
+
+/* For IE */
+.slider::-ms-track {
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.slider::-ms-thumb {
+  width: 25px;
+  height: 25px;
+  background: #eeb111;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px #000;
+}
+
+.slider:active::-webkit-slider-thumb,
+.slider:active::-moz-range-thumb,
+.slider:active::-ms-thumb {
+  background: #dda30f;
+}
+
+.labelValue {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.acceptButton {
+  padding: 1vh 2vw;
+  margin-top: 7vh; /* Space above the button */
+  border: none;
+  background-color: #0d436b; /* Green background, or choose your color */
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.acceptButton:hover {
+  background-color: #1a1a2e; /* Darker green on hover */
+}
+
+.acceptButton:active {
+  transform: scale(0.98); /* Slight press effect */
+}
+
+
+.exit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
