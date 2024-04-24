@@ -4,9 +4,6 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Login from "./Login/page";
 import Dashboard from "./Dashboard/page";
-import Game from "./Game/page";
-
-import Link from "next/link";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,7 +21,7 @@ export default function Home() {
     setIsLoggedIn(true);
   };
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     localStorage.removeItem('userToken'); // Clearing the user token
     setIsLoggedIn(false);
   };

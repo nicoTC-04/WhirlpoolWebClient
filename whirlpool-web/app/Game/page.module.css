@@ -1,14 +1,18 @@
 .gameDiv {
     /*background-color: yellowgreen;*/
     margin: auto;
+    /*margin-top: 0vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
+
+    z-index: 900;
 }
 
 .salir{
     display: flex;
     justify-content: end;
     margin: 2%;
+    z-index: 1000;
 }

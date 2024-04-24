@@ -21,16 +21,56 @@
 }
 
 .navbar button {
+  margin-top: -.2vh;
   border: none;
   background: transparent;
   outline: none;
   cursor: pointer;
 }
 
+.game {
+  font-size: medium;
+  color: white;
+}
+
+.game:hover {
+  color: #eeb111;
+}
+
 .usuario {
   margin-left: 30px;
   width: 10vw;
+  font-size: medium;
   color: #dee0e3;
+}
+
+.usuario :hover {
+  color: #eeb111;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 9vw;
+  margin-right: 2vw;
+  text-align: center;
+}
+
+.dropdownMenu p {
+  padding: 12px;
+  margin: 0;
+  cursor: pointer;
+  color: black;
+  background: white;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdownMenu p:hover {
+  background-color: #f1f1f1;
 }
 
 .logo {

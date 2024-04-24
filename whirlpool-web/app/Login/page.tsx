@@ -21,7 +21,7 @@ const Login = ({ handleLogin }: { handleLogin: (token: string) => void }) => {
     }
 
     setIsLoading(true); // Start loading
-    const apiKey = "AIzaSyBehaVqkYZZ846B6zMJv2T_40o_bgrG4JU";
+    const apiKey = "AIzaSyCz4ZaPW6pi0XwNeqrz2h6IoZFV5QgQ7cM";
     const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
 
     try {

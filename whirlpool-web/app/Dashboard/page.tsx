@@ -19,13 +19,26 @@ interface ReporteData {
   fecha_generacion: string;
 }
 
-const Dashboard = () => {
+
+
+const Dashboard = ({ handleLogout }: { handleLogout:() => void }) => {
   const [reporte, setReporte] = useState<ReporteData[]>([]);
   const [rank, setRank] = useState<any[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [sliderValue, setSliderValue] = useState(100);
   const [reporteSeleccionado, setReporteSeleccionado] = useState<ReporteData | null>(null);
   const [textoIA, setTextoIA] = useState("Generando resumen...");
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+  const logout = () => {
+    console.log(localStorage.getItem('userToken'));
+    console.log("Logging out");
+    console.log('handleLogout type:', typeof handleLogout);
+    handleLogout();
+  }
 
   const openModal = (
     idReporte: number,
@@ -128,11 +141,17 @@ const Dashboard = () => {
         <div className={styles.navRight}>
           <Link href="/Game">
             <button>
-              <p style={{ color: "white" }}> Prueba nuestro Juego</p>
+              <p className={styles.game}> Prueba nuestro Juego</p>
             </button>
           </Link>
-          <div className={styles.usuario}>
-            <p> Usuario</p>
+
+          <div className={styles.usuario} onClick={toggleDropdown}>
+            <p>Usuario</p>
+            {showDropdown && (
+              <div className={styles.dropdownMenu}>
+                <p onClick={logout}>Cerrar sesión</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
