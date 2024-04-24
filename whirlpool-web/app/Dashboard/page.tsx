@@ -20,8 +20,11 @@ interface ReporteData {
 }
 
 
+interface DashboardProps {
+  handleLogout: () => void;
+}
 
-const Dashboard = ({ handleLogout }: { handleLogout:() => void }) => {
+const Dashboard: React.FC<DashboardProps> = ({ handleLogout }) => {
   const [reporte, setReporte] = useState<ReporteData[]>([]);
   const [rank, setRank] = useState<any[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
