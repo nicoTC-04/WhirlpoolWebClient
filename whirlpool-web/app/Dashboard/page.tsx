@@ -77,7 +77,7 @@ const Dashboard = () => {
   const handleSubmit = async () => {
     // Post con axios para solucionar reporte
     try {
-      await axios.post("http://34.71.54.85:5001/reporteSolucionado", {
+      await axios.post("http://34.42.65.97:5001/reporteSolucionado", {
         // datos
         reporte_id: reporteSeleccionado?.id_reporte,
         id_empleado_soluciona: 2,
@@ -94,7 +94,7 @@ const Dashboard = () => {
 
   const fetchReporte = async () => {
     try {
-      const response = await axios.get("http://34.71.54.85:5001/reportes");
+      const response = await axios.get("http://34.42.65.97:5001/reportes");
       console.log(response);
 
       const sortedReportes = response.data.sort(
@@ -110,7 +110,7 @@ const Dashboard = () => {
 
   const fetchLeaderBoard = async () => {
     try {
-      const response = await axios.get("http://34.71.54.85:5001/tablero");
+      const response = await axios.get("http://34.42.65.97:5001/tablero");
       console.log(response);
       setRank(response.data);
     } catch (error) {
@@ -120,7 +120,7 @@ const Dashboard = () => {
 
   const fetchTextoIA = async () => {
     try {
-      const response = await axios.get("http://34.71.54.85:5001/resumenAi");
+      const response = await axios.get("http://34.42.65.97:5001/resumenAi");
       console.log(response);
       setTextoIA(response.data.resumen);
     } catch (error) {
@@ -221,7 +221,7 @@ const Dashboard = () => {
             {/* Imagen del modal */}
             <div className={styles.modalLeft}>
               <img
-                src={`http://34.71.54.85:5001/imagen/${reporteSeleccionado?.id_reporte}`}
+                src={`http://34.42.65.97:5001/imagen/${reporteSeleccionado?.id_reporte}`}
                 alt="Report Image"
                 className={styles.modalImage}
               />
