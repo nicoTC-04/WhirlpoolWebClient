@@ -6,6 +6,8 @@ import Report from "../components/Report";
 import Leaderboard from "../components/Leaderboard";
 import axios from "axios";
 import Link from "next/link";
+import { useAuth } from './../components/AuthContext';
+import { useRouter } from 'next/navigation';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -20,11 +22,9 @@ interface ReporteData {
 }
 
 
-interface DashboardProps {
-  handleLogout: () => void;
-}
 
-const Dashboard: React.FC<DashboardProps> = ({ handleLogout }) => {
+// @ts-ignore
+const Dashboard = () => {
   const [reporte, setReporte] = useState<ReporteData[]>([]);
   const [rank, setRank] = useState<any[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,12 +34,17 @@ const Dashboard: React.FC<DashboardProps> = ({ handleLogout }) => {
 
   const [showDropdown, setShowDropdown] = useState(false);
 
+  const { handleLogout, isLoggedIn } = useAuth();
+  const router = useRouter();
+
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
   const logout = () => {
     console.log(localStorage.getItem('userToken'));
     console.log("Logging out");
     console.log('handleLogout type:', typeof handleLogout);
+    console.log('handleLogout:', handleLogout);
+    console.log(isLoggedIn);
     handleLogout();
   }
 
@@ -128,7 +133,10 @@ const Dashboard: React.FC<DashboardProps> = ({ handleLogout }) => {
     fetchReporte();
     fetchLeaderBoard();
     fetchTextoIA();
-  }, []);
+    if (!isLoggedIn) {
+      router.push('/Login');
+    }
+  }, [isLoggedIn, router]);
 
   return (
     <>

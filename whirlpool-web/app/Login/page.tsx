@@ -1,14 +1,27 @@
 // login
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useAuth } from './../components/AuthContext';
+import { useRouter } from 'next/navigation';
 
-const Login = ({ handleLogin }: { handleLogin: (token: string) => void }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const { handleLogin, isLoggedIn } = useAuth();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/Dashboard');
+    }
+  }, [isLoggedIn, router]);
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +56,11 @@ const Login = ({ handleLogin }: { handleLogin: (token: string) => void }) => {
       if (!response.ok) {
         throw new Error(data.error.message || "An error occurred");
       }
+
+      console.log('Logging in...');
+      console.log(isLoggedIn);
+      console.log(handleLogin);
+
 
       handleLogin(data.idToken); // Pass the Firebase token to the handler
     } catch (error) {
