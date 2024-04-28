@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 
 const Game = () => {
-  const unityUrl = "http://localhost:3000/";
+  const unityUrl = "http://10.128.0.3:3000/";
   return (
     <>
       <div className={styles.salir}>
