@@ -48,6 +48,11 @@ const Dashboard = () => {
     handleLogout();
   }
 
+  const openGame = () => {
+    console.log("Open Game");
+    router.push('/Game');
+  }
+
   const openModal = (
     idReporte: number,
     nombreEmpleado: string,
@@ -151,7 +156,7 @@ const Dashboard = () => {
         </div>
         <div className={styles.navRight}>
           <Link href="/Game">
-            <button>
+            <button onClick={openGame}>
               <p className={styles.game}> Prueba nuestro Juego</p>
             </button>
           </Link>
@@ -211,7 +216,8 @@ const Dashboard = () => {
             {/* Botón de salida */}
             <div className={styles.exit} onClick={closeModal}>
               <Image
-                src={"/x-solid.svg"}
+                /*src={"/x-solid.svg"}*/
+                src={"/liverpool.jpg"}
                 height={25}
                 width={25}
                 alt="exit"
