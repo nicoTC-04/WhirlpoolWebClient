@@ -111,6 +111,8 @@
   height: 32vh;
   width: 25vw;
   background-color: #1a1a2e;
+  overflow-x: hidden;
+  overflow-y:auto;
 }
 
 .aiHeader {
